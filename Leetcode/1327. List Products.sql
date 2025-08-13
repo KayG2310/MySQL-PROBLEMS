@@ -1,3 +1,13 @@
+-- short form 
+-- Solution for LeetCode 1327: Products a and b with at least 100 units sold in February 2020
+
+SELECT p.product_name, SUM(o.unit) AS unit
+FROM Products p, Orders o
+WHERE p.product_id = o.product_id and o.order_date BETWEEN '2020-02-01' AND '2020-02-29'
+GROUP BY p.product_id, p.product_name
+HAVING SUM(o.unit) >= 100;
+
+
 -- Solution for LeetCode 1327: Products a and b with at least 100 units sold in February 2020
 
 SELECT
