@@ -1,0 +1,5 @@
+-- Write your PostgreSQL query statement below
+with sample as 
+(select d.name as Department, e.name as Employee, e.salary 
+from Employee e, Department d 
+where e.departmentId = d.id and e.salary in (select distinct(salary) from Employee where departmentId = e.departmentId order by salary desc limit 3)) select * from sample;  
